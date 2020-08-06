@@ -7,14 +7,6 @@ using System.Linq;
 /// </summary>
 public static class ImageRotator
 {
-    /// <summary>
-    /// Rotate the given image file according to Exif Orientation data
-    /// </summary>
-    /// <param name="sourceFilePath">path of source file</param>
-    /// <param name="targetFilePath">path of target file</param>
-    /// <param name="targetFormat">target format</param>
-    /// <param name="updateExifData">set it to TRUE to update image Exif data after rotation (default is TRUE)</param>
-    /// <returns>The RotateFlipType value corresponding to the applied rotation. If no rotation occurred, RotateFlipType.RotateNoneFlipNone will be returned.</returns>
     public static RotateFlipType RotateImageByExifOrientationData(string sourceFilePath, string targetFilePath, ImageFormat targetFormat, bool updateExifData = true)
     {
         // Rotate the image according to EXIF data
@@ -27,12 +19,6 @@ public static class ImageRotator
         return fType;
     }
 
-    /// <summary>
-    /// Rotate the given bitmap according to Exif Orientation data
-    /// </summary>
-    /// <param name="img">source image</param>
-    /// <param name="updateExifData">set it to TRUE to update image Exif data after rotation (default is TRUE)</param>
-    /// <returns>The RotateFlipType value corresponding to the applied rotation. If no rotation occurred, RotateFlipType.RotateNoneFlipNone will be returned.</returns>
     public static RotateFlipType RotateImageByExifOrientationData(Image img, bool updateExifData = true)
     {
         int orientationId = 0x0112;
@@ -51,11 +37,6 @@ public static class ImageRotator
         return fType;
     }
 
-    /// <summary>
-    /// Return the proper System.Drawing.RotateFlipType according to given orientation EXIF metadata
-    /// </summary>
-    /// <param name="orientation">Exif "Orientation"</param>
-    /// <returns>the corresponding System.Drawing.RotateFlipType enum value</returns>
     public static RotateFlipType GetRotateFlipTypeByExifOrientationData(int orientation)
     {
         switch (orientation)
